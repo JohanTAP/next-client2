@@ -52,7 +52,7 @@ const data = {
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Configuraciones",
           url: "#",
         },
       ],
@@ -77,7 +77,7 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Documentación",
       url: "#",
       icon: BookOpen,
       items: [
@@ -100,7 +100,7 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title: "Configuraciones",
       url: "#",
       icon: Settings2,
       items: [
@@ -125,7 +125,7 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Support",
+      title: "Soporte",
       url: "#",
       icon: LifeBuoy,
     },

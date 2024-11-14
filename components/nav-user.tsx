@@ -95,7 +95,7 @@ export function NavUser ( {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <BadgeCheck />
-                Account
+                Cuenta
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard />
@@ -103,13 +103,13 @@ export function NavUser ( {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Bell />
-                Notifications
+                Notificaciones
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut />
-              Log out
+              Cerrar sesión
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
