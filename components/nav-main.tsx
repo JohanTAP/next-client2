@@ -3,23 +3,23 @@
 import { ChevronRight, type LucideIcon } from "lucide-react"
 
 import
-  {
-    Collapsible,
-    CollapsibleContent,
-    CollapsibleTrigger,
-  } from "@/components/ui/collapsible"
+{
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import
-  {
-    SidebarGroup,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuAction,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarMenuSub,
-    SidebarMenuSubButton,
-    SidebarMenuSubItem,
-  } from "@/components/ui/sidebar"
+{
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from "@/components/ui/sidebar"
 
 export function NavMain ( {
   items,
@@ -38,7 +38,7 @@ export function NavMain ( {
 {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Plataforma</SidebarGroupLabel>
       <SidebarMenu>
         { items.map( ( item ) => (
           <Collapsible key={ item.title } asChild defaultOpen={ item.isActive }>
