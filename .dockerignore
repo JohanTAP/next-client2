@@ -1,0 +1,10 @@
+# Ignorar archivos y carpetas innecesarios para el contenedor
+node_modules
+client
+.git
+.DS_Store
+.env
+*.log
+dist/
+cache/
+tmp/
