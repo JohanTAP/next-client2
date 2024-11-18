@@ -1,38 +1,45 @@
 "use client"
 
 import
-  {
-    BadgeCheck,
-    Bell,
-    ChevronsUpDown,
-    CreditCard,
-    LogOut,
-    Sparkles,
-  } from "lucide-react"
+{
+  BadgeCheck,
+  Bell,
+  ChevronsUpDown,
+  LogOut,
+} from "lucide-react"
 
 import
-  {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-  } from "@/components/ui/avatar"
+{
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 import
-  {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+{
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import
-  {
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    useSidebar,
-  } from "@/components/ui/sidebar"
+{
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from "@/components/ui/sidebar"
+
+import { useLogout } from "@/hooks/useLogout";
+import { useAuth } from "@/context/AuthContext"
+
+function capitalizeFirstLetter ( text: string )
+{
+  if ( !text ) return "";
+  return text.charAt( 0 ).toUpperCase() + text.slice( 1 ).toLowerCase();
+}
 
 export function NavUser ( {
   user,
@@ -45,6 +52,13 @@ export function NavUser ( {
 } )
 {
   const { isMobile } = useSidebar()
+  const { handleLogout } = useLogout();
+  const { userInfo } = useAuth();
+
+  if ( !userInfo )
+  {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <SidebarMenu>
@@ -60,8 +74,8 @@ export function NavUser ( {
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{ user.name }</span>
-                <span className="truncate text-xs">{ user.email }</span>
+                <span className="truncate font-semibold">{ userInfo.username || "Sin nombre" }</span>
+                { userInfo.rol.tipo_usuario ? capitalizeFirstLetter( userInfo.rol.tipo_usuario ) : "Sin rol" }
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -79,17 +93,13 @@ export function NavUser ( {
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{ user.name }</span>
-                  <span className="truncate text-xs">{ user.email }</span>
+                  <span className="truncate font-semibold">{ userInfo.username || "Sin nombre" }</span>
+                  { userInfo.rol.tipo_usuario ? capitalizeFirstLetter( userInfo.rol.tipo_usuario ) : "Sin rol" }
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
@@ -98,16 +108,12 @@ export function NavUser ( {
                 Cuenta
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
                 <Bell />
                 Notificaciones
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={ handleLogout }>
               <LogOut />
               Cerrar sesión
             </DropdownMenuItem>
